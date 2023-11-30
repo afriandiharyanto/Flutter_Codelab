@@ -1,3 +1,4 @@
+import 'package:ait_training/idea/word_card.dart';
 import 'package:ait_training/idea/word_pair_cubit.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-}
-
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -41,16 +38,19 @@ class MyHomePage extends StatelessWidget {
         toolbarHeight: 0.0,
       ),
       body: BlocBuilder<WordPairCubit, WordPair>(builder: (context, wordPair) {
-        return Column(
-          children: [
-            const Text('Test A random idea:'),
-            Text('$wordPair'),
-            ElevatedButton(
-                onPressed: () {
-                  context.read<WordPairCubit>().next();
-                },
-                child: const Text('Next'))
-          ],
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('Random Idea'),
+              WordCard(wordPair: wordPair),
+              ElevatedButton(
+                  onPressed: () {
+                    context.read<WordPairCubit>().next();
+                  },
+                  child: const Text('Next'))
+            ],
+          ),
         );
       }),
     );
