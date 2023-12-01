@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class WordCard extends StatelessWidget {
-  const WordCard({super.key, required this.wordPair});
+  const WordCard({super.key, required this.wordPair, required this.bgColor});
 
   final WordPair wordPair;
+  final Color bgColor;
 
   @override
   Widget build(BuildContext context) {
-    Color bgColor = Color((math.Random().nextDouble() * 0xFFFFFF).toInt());
-    var textColor = Colors.black;
+    // Color bgColor = Color((math.Random().nextDouble() * 0xFFFFFF).toInt());
+    var textColor = Colors.black.withOpacity(0.7);
     if (isDarkColor(bgColor)) {
       textColor = Colors.white;
     }
@@ -20,10 +21,10 @@ class WordCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       elevation: 2.0,
       child: Padding(
-        padding: const EdgeInsets.all(100.0),
+        padding: const EdgeInsets.all(10.0),
         child: Text(
-          wordPair.asLowerCase,
-          style: TextStyle(color: textColor),
+          "${wordPair.first} ${wordPair.second}",
+          style: TextStyle(color: textColor, fontSize: 42.0),
         ),
       ),
     );

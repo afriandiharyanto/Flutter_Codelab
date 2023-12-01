@@ -1,6 +1,6 @@
-import 'package:ait_training/idea/word_card.dart';
-import 'package:ait_training/idea/word_pair_cubit.dart';
-import 'package:english_words/english_words.dart';
+import 'package:ait_training/word/word_card.dart';
+import 'package:ait_training/word/word_cubit.dart';
+import 'package:ait_training/word/word_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,18 +37,54 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: const Color(0xFF245953),
         toolbarHeight: 0.0,
       ),
-      body: BlocBuilder<WordPairCubit, WordPair>(builder: (context, wordPair) {
+      body: BlocBuilder<WordPairCubit, WordState>(builder: (context, state) {
+        WordPairCubit cubit = context.read<WordPairCubit>();
+        IconData icon;
+        if (state.favorites.contains(state.wordPair)) {
+          icon = Icons.favorite;
+        } else {
+          icon = Icons.favorite_border;
+        }
+        print("WIDGET --- ${state.favorites} :: ${state.wordPair}");
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Random Idea'),
-              WordCard(wordPair: wordPair),
-              ElevatedButton(
-                  onPressed: () {
-                    context.read<WordPairCubit>().next();
-                  },
-                  child: const Text('Next'))
+              WordCard(
+                wordPair: state.wordPair,
+                bgColor: state.color,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      cubit.toggle(state.wordPair);
+                    },
+                    icon: Icon(icon),
+                    label: const Text('Like'),
+                  ),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        cubit.next();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.amberAccent,
+                      ),
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(0.9),
+                            fontSize: 14.0),
+                      )),
+                ],
+              )
             ],
           ),
         );
