@@ -6,7 +6,9 @@ part 'idea_state.dart';
 part 'idea_cubit.freezed.dart';
 
 class IdeaCubit extends Cubit<IdeaState> {
-  IdeaCubit({required this.repository}) : super(IdeaState.empty());
+  IdeaCubit({required this.repository}) : super(IdeaState.empty()) {
+    getRandomIdea();
+  }
 
   IdeaRepository repository;
 
