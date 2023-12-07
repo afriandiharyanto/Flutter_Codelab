@@ -1,4 +1,4 @@
-import 'package:ait_training/word/word_card.dart';
+import 'package:ait_training/common/widgets/card_widget.dart';
 import 'package:ait_training/word/word_cubit.dart';
 import 'package:ait_training/word/word_state.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +22,11 @@ class WordGeneratorPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WordCard(
-              wordPair: state.wordPair,
+            CardWidget(
+              mainWord: state.wordPair.first,
+              additionalWord: state.wordPair.second,
               bgColor: state.color,
+              fontSize: 42.0,
             ),
             const SizedBox(
               height: 20.0,

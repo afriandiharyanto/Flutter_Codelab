@@ -1,12 +1,21 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class WordCard extends StatelessWidget {
-  const WordCard({super.key, required this.wordPair, required this.bgColor});
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final WordPair wordPair;
+class CardWidget extends StatelessWidget {
+  const CardWidget({
+    super.key,
+    required this.mainWord,
+    required this.bgColor,
+    @Default("") this.additionalWord,
+    @Default(42.0) required this.fontSize,
+  });
+
+  final String mainWord;
+  final String? additionalWord;
   final Color bgColor;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +32,7 @@ class WordCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Text(
-          "${wordPair.first} ${wordPair.second}",
+          "$mainWord ${additionalWord ?? ""}",
           style: TextStyle(color: textColor, fontSize: 42.0),
         ),
       ),

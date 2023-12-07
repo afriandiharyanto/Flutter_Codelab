@@ -3,10 +3,14 @@ part of 'idea_cubit.dart';
 @freezed
 class IdeaState with _$IdeaState {
   const factory IdeaState({
-    required String name,
-    required int age,
-    required double salary,
+    required String activity,
+    required int participant,
+    required double price,
   }) = _IdeaState;
 
-  factory IdeaState.empty() => const IdeaState(name: "", age: 0, salary: 0.0);
+  factory IdeaState.empty() {
+    return const IdeaState(activity: "", participant: 1, price: 0.0);
+  }
+
+
 }

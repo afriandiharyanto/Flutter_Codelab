@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IdeaState {
-  String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
-  double get salary => throw _privateConstructorUsedError;
+  String get activity => throw _privateConstructorUsedError;
+  int get participant => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IdeaStateCopyWith<IdeaState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $IdeaStateCopyWith<$Res> {
   factory $IdeaStateCopyWith(IdeaState value, $Res Function(IdeaState) then) =
       _$IdeaStateCopyWithImpl<$Res, IdeaState>;
   @useResult
-  $Res call({String name, int age, double salary});
+  $Res call({String activity, int participant, double price});
 }
 
 /// @nodoc
@@ -46,22 +46,22 @@ class _$IdeaStateCopyWithImpl<$Res, $Val extends IdeaState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? age = null,
-    Object? salary = null,
+    Object? activity = null,
+    Object? participant = null,
+    Object? price = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      activity: null == activity
+          ? _value.activity
+          : activity // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
               as int,
-      salary: null == salary
-          ? _value.salary
-          : salary // ignore: cast_nullable_to_non_nullable
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$IdeaStateImplCopyWith<$Res>
       __$$IdeaStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int age, double salary});
+  $Res call({String activity, int participant, double price});
 }
 
 /// @nodoc
@@ -89,22 +89,22 @@ class __$$IdeaStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? age = null,
-    Object? salary = null,
+    Object? activity = null,
+    Object? participant = null,
+    Object? price = null,
   }) {
     return _then(_$IdeaStateImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      activity: null == activity
+          ? _value.activity
+          : activity // ignore: cast_nullable_to_non_nullable
               as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      participant: null == participant
+          ? _value.participant
+          : participant // ignore: cast_nullable_to_non_nullable
               as int,
-      salary: null == salary
-          ? _value.salary
-          : salary // ignore: cast_nullable_to_non_nullable
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
@@ -114,18 +114,18 @@ class __$$IdeaStateImplCopyWithImpl<$Res>
 
 class _$IdeaStateImpl implements _IdeaState {
   const _$IdeaStateImpl(
-      {required this.name, required this.age, required this.salary});
+      {required this.activity, required this.participant, required this.price});
 
   @override
-  final String name;
+  final String activity;
   @override
-  final int age;
+  final int participant;
   @override
-  final double salary;
+  final double price;
 
   @override
   String toString() {
-    return 'IdeaState(name: $name, age: $age, salary: $salary)';
+    return 'IdeaState(activity: $activity, participant: $participant, price: $price)';
   }
 
   @override
@@ -133,13 +133,15 @@ class _$IdeaStateImpl implements _IdeaState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$IdeaStateImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.age, age) || other.age == age) &&
-            (identical(other.salary, salary) || other.salary == salary));
+            (identical(other.activity, activity) ||
+                other.activity == activity) &&
+            (identical(other.participant, participant) ||
+                other.participant == participant) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, age, salary);
+  int get hashCode => Object.hash(runtimeType, activity, participant, price);
 
   @JsonKey(ignore: true)
   @override
@@ -150,16 +152,16 @@ class _$IdeaStateImpl implements _IdeaState {
 
 abstract class _IdeaState implements IdeaState {
   const factory _IdeaState(
-      {required final String name,
-      required final int age,
-      required final double salary}) = _$IdeaStateImpl;
+      {required final String activity,
+      required final int participant,
+      required final double price}) = _$IdeaStateImpl;
 
   @override
-  String get name;
+  String get activity;
   @override
-  int get age;
+  int get participant;
   @override
-  double get salary;
+  double get price;
   @override
   @JsonKey(ignore: true)
   _$$IdeaStateImplCopyWith<_$IdeaStateImpl> get copyWith =>

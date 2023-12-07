@@ -1,3 +1,4 @@
+import 'package:ait_training/idea/cubit/idea_cubit.dart';
 import 'package:ait_training/idea/ui/idea_page.dart';
 import 'package:ait_training/meme/ui/meme_page.dart';
 import 'package:ait_training/quotes/ui/quotes_page.dart';
@@ -6,6 +7,7 @@ import 'package:ait_training/word/word_favorites_page.dart';
 import 'package:ait_training/word/word_generator_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,15 +19,33 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
+  StatelessWidget wrapCubit<T>(
+      {required Cubit<T> cubit, required StatelessWidget base}) {
+    return BlocProvider(
+      create: (_) => cubit,
+      child: base,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     StatelessWidget page;
     if (_selectedIndex == 0) {
-      page = const WordGeneratorPage();
+      page = BlocProvider(
+        create: (_) => GetIt.I<WordPairCubit>(),
+        child: const WordGeneratorPage(),
+      );
     } else if (_selectedIndex == 1) {
-      page = const WordFavoritesPage();
+      page = BlocProvider(
+        create: (_) => GetIt.I<WordPairCubit>(),
+        child: const WordFavoritesPage(),
+      );
     } else if (_selectedIndex == 2) {
-      page = const IdeaPage();
+      print("IDEA");
+      page = BlocProvider(
+        create: (_) => GetIt.I<IdeaCubit>(),
+        child: const IdeaPage(),
+      );
     } else if (_selectedIndex == 3) {
       page = const MemePage();
     } else if (_selectedIndex == 4) {
@@ -49,16 +69,16 @@ class _HomePageState extends State<HomePage> {
                 label: Text('Favorites'),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.quora_outlined),
-                label: Text('Quora'),
+                icon: Icon(Icons.lightbulb),
+                label: Text('Ideas'),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.gamepad),
-                label: Text('Game'),
+                icon: Icon(Icons.image),
+                label: Text('Meme'),
               ),
               NavigationRailDestination(
-                icon: Icon(Icons.donut_large),
-                label: Text('Zoom In'),
+                icon: Icon(Icons.textsms),
+                label: Text('Quotes'),
               ),
             ],
             selectedIndex: _selectedIndex,
