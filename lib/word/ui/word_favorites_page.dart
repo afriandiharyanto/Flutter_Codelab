@@ -1,5 +1,5 @@
-import 'package:ait_training/word/word_cubit.dart';
-import 'package:ait_training/word/word_state.dart';
+import 'package:ait_training/word/cubit/word_cubit.dart';
+import 'package:ait_training/word/cubit/word_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
