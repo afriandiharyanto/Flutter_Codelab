@@ -30,7 +30,9 @@ class IdeaLoading implements IdeaState {
 }
 
 class IdeaError implements IdeaState {
-  const IdeaError({required Exception exception});
+  const IdeaError({required this.exception});
+
+  final Exception exception;
 }
 
 class IdeaLoaded implements IdeaState {

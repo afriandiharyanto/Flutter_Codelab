@@ -1,6 +1,7 @@
 import 'package:ait_training/idea/cubit/idea_cubit.dart';
 import 'package:ait_training/idea/ui/idea_page.dart';
 import 'package:ait_training/meme/ui/meme_page.dart';
+import 'package:ait_training/quotes/cubit/quotes_cubit.dart';
 import 'package:ait_training/quotes/ui/quotes_page.dart';
 import 'package:ait_training/word/cubit/word_cubit.dart';
 import 'package:ait_training/word/ui/word_favorites_page.dart';
@@ -41,7 +42,6 @@ class _HomePageState extends State<HomePage> {
         child: const WordFavoritesPage(),
       );
     } else if (_selectedIndex == 2) {
-      print("IDEA");
       page = BlocProvider(
         create: (_) => GetIt.I<IdeaCubit>(),
         child: const IdeaPage(),
@@ -49,7 +49,10 @@ class _HomePageState extends State<HomePage> {
     } else if (_selectedIndex == 3) {
       page = const MemePage();
     } else if (_selectedIndex == 4) {
-      page = const QuotesPage();
+      page = BlocProvider(
+        create: (context) => GetIt.I<QuotesCubit>(),
+        child: const QuotesPage(),
+      );
     } else {
       throw UnimplementedError('no widget for $_selectedIndex');
     }

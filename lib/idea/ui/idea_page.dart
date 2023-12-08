@@ -18,11 +18,11 @@ class IdeaPage extends StatelessWidget {
               size: 42,
             ),
           ),
-        IdeaError() => const Placeholder(
-            child: Text("Error"),
+        IdeaError() => Center(
+            child: Text(state.exception.toString()),
           ),
         IdeaLoaded() => IdealLoadedView(data: state),
-        IdeaState() => const Placeholder(
+        IdeaState() => const Center(
             child: Text("Default"),
           ),
       };

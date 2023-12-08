@@ -5,10 +5,10 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
 class IdeaRepository {
+  final String _url = 'http://www.boredapi.com/api/activity';
   Future<Either<Exception, Idea>> fetchIdea({String? type}) async {
     try {
-      final response = await http
-          .get(Uri.parse('http://www.boredapi.com/api/activity/${type ?? ""}'));
+      final response = await http.get(Uri.parse('$_url/${type ?? ""}'));
 
       if (response.statusCode == 200) {
         var result = json.decode(response.body);
@@ -21,7 +21,7 @@ class IdeaRepository {
 
         return Right(idea);
       } else {
-        throw Left(Exception('Failed to load idea'));
+        return Left(Exception('Failed to load idea'));
       }
     } on http.ClientException catch (error) {
       return Left(error);
