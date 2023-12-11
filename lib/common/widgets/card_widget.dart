@@ -33,7 +33,7 @@ class CardWidget extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Text(
           "$mainWord ${additionalWord ?? ""}",
-          style: TextStyle(color: textColor, fontSize: 42.0),
+          style: TextStyle(color: textColor, fontSize: fontSize),
         ),
       ),
     );

@@ -19,7 +19,7 @@ void setupWordInjection() {
 void setupQuotesInjection() {
   GetIt.I.registerFactory<QuotesRepository>(() => QuotesRepository());
   GetIt.I.registerFactory<QuotesCubit>(
-    () => QuotesCubit(repository: GetIt.I<QuotesRepository>()),
+    () => QuotesCubit(GetIt.I<QuotesRepository>()),
   );
 }
 

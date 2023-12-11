@@ -1,3 +1,4 @@
+import 'package:ait_training/animated_home.dart';
 import 'package:ait_training/home_page.dart';
 import 'package:ait_training/injection.dart';
 import 'package:flutter/material.dart';

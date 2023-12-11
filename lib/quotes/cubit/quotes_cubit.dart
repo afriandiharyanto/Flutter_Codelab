@@ -6,15 +6,15 @@ part 'quotes_state.dart';
 part 'quotes_cubit.freezed.dart';
 
 class QuotesCubit extends Cubit<QuotesState> {
-  QuotesCubit({required this.repository}) : super(QuotesState.loading()) {
+  QuotesCubit(this._repository) : super(QuotesState.loading()) {
     fetchQuotes();
   }
 
-  QuotesRepository repository;
+  final QuotesRepository _repository;
 
   void fetchQuotes() async {
     emit(QuotesState.loading());
-    var result = await repository.fetchQuote();
+    var result = await _repository.fetchQuote();
 
     result.fold(
       (l) => emit(QuotesState.error(l)),

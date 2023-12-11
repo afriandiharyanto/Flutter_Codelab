@@ -1,3 +1,4 @@
+import 'package:ait_training/animated_home.dart';
 import 'package:ait_training/idea/cubit/idea_cubit.dart';
 import 'package:ait_training/idea/ui/idea_page.dart';
 import 'package:ait_training/meme/ui/meme_page.dart';
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    StatelessWidget page;
+    Widget page;
     if (_selectedIndex == 0) {
       page = BlocProvider(
         create: (_) => GetIt.I<WordPairCubit>(),
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         child: const IdeaPage(),
       );
     } else if (_selectedIndex == 3) {
-      page = const MemePage();
+      page = const AnimatedHome();
     } else if (_selectedIndex == 4) {
       page = BlocProvider(
         create: (context) => GetIt.I<QuotesCubit>(),

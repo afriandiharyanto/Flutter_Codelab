@@ -11,6 +11,7 @@ class QuotesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuotesCubit, QuotesState>(builder: (context, state) {
       QuotesCubit cubit = context.read<QuotesCubit>();
+
       return switch (state) {
         QuotesLoading() => Center(
             child: LoadingAnimationWidget.staggeredDotsWave(
@@ -28,7 +29,7 @@ class QuotesPage extends StatelessWidget {
                 CardWidget(
                   mainWord: "${state.content} \n-${state.name} : ${state.tag}-",
                   bgColor: Colors.cyan,
-                  fontSize: 18.0,
+                  fontSize: 12.0,
                 ),
                 const SizedBox(
                   height: 20.0,

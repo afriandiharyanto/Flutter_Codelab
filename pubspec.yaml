@@ -25,6 +25,9 @@ dependencies:
   get_it: ^7.6.4
   convert: ^3.1.1
   loading_animation_widget: ^1.2.0+4
+  vector_math: ^2.1.4
+  json_serializable: ^6.7.1
+  dio: ^5.4.0
 
 dev_dependencies:
   flutter_test:
