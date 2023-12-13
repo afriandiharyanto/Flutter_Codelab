@@ -10,23 +10,34 @@ class IdeaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<IdeaCubit, IdeaState>(builder: (context, state) {
-      return switch (state) {
-        IdeaLoading() => Center(
-            child: LoadingAnimationWidget.staggeredDotsWave(
-              color: Colors.black45,
-              size: 42,
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.cyan,
+        title: const Text("Boring App"),
+        centerTitle: true,
+      ),
+      body: BlocBuilder<IdeaCubit, IdeaState>(builder: (context, state) {
+        return switch (state) {
+          IdeaLoading() => Center(
+              child: LoadingAnimationWidget.staggeredDotsWave(
+                color: Colors.black45,
+                size: 42,
+              ),
             ),
-          ),
-        IdeaError() => Center(
-            child: Text(state.exception.toString()),
-          ),
-        IdeaLoaded() => IdealLoadedView(data: state),
-        IdeaState() => const Center(
-            child: Text("Default"),
-          ),
-      };
-    });
+          IdeaError() => Center(
+              child: Text(state.exception.toString()),
+            ),
+          IdeaLoaded() => IdealLoadedView(data: state),
+          IdeaState() => const Center(
+              child: Text("Default"),
+            ),
+        };
+      }),
+    );
   }
 }
 

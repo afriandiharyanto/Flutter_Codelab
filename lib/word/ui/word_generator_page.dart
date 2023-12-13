@@ -9,58 +9,65 @@ class WordGeneratorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WordPairCubit, WordState>(builder: (context, state) {
-      WordPairCubit cubit = context.read<WordPairCubit>();
-      IconData icon;
-      if (state.favorites.contains(state.wordPair)) {
-        icon = Icons.favorite;
-      } else {
-        icon = Icons.favorite_border;
-      }
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF245953),
+        toolbarHeight: 0.0,
+      ),
+      body: BlocBuilder<WordPairCubit, WordState>(builder: (context, state) {
+        WordPairCubit cubit = context.read<WordPairCubit>();
+        IconData icon;
+        if (state.favorites.contains(state.wordPair)) {
+          icon = Icons.favorite;
+        } else {
+          icon = Icons.favorite_border;
+        }
 
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CardWidget(
-              mainWord: state.wordPair.first,
-              additionalWord: state.wordPair.second,
-              bgColor: state.color,
-              fontSize: 42.0,
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    cubit.toggle(state.wordPair);
-                  },
-                  icon: Icon(icon),
-                  label: const Text('Like'),
-                ),
-                const SizedBox(
-                  width: 20.0,
-                ),
-                ElevatedButton(
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CardWidget(
+                mainWord: state.wordPair.first,
+                additionalWord: state.wordPair.second,
+                bgColor: state.color,
+                fontSize: 42.0,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton.icon(
                     onPressed: () {
-                      cubit.next();
+                      cubit.toggle(state.wordPair);
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.amberAccent,
-                    ),
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                          color: Colors.black.withOpacity(0.9), fontSize: 14.0),
-                    )),
-              ],
-            )
-          ],
-        ),
-      );
-    });
+                    icon: Icon(icon),
+                    label: const Text('Like'),
+                  ),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        cubit.next();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.amberAccent,
+                      ),
+                      child: Text(
+                        'Next',
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(0.9),
+                            fontSize: 14.0),
+                      )),
+                ],
+              )
+            ],
+          ),
+        );
+      }),
+    );
   }
 }
