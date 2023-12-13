@@ -1,3 +1,4 @@
+import 'package:ait_training/animated/animated_page.dart';
 import 'package:ait_training/idea/cubit/idea_cubit.dart';
 import 'package:ait_training/idea/ui/idea_page.dart';
 import 'package:ait_training/meme/ui/meme_page.dart';
@@ -52,6 +53,15 @@ final GoRouter router = GoRouter(
             );
           },
         ),
+        GoRoute(
+          path: 'animated',
+          builder: (BuildContext context, GoRouterState state) {
+            return BlocProvider(
+              create: (_) => GetIt.I<IdeaCubit>(),
+              child: const AnimatedPage(),
+            );
+          },
+        ),
       ],
     ),
   ],
@@ -62,4 +72,5 @@ final List<String> destinations = <String>[
   "/quotes",
   "/idea",
   "/word",
+  "/animated",
 ];
