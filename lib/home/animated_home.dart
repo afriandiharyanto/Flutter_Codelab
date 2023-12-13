@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:math' as math;
 
 import 'package:vector_math/vector_math_64.dart';
@@ -90,9 +89,9 @@ class _AnimatedHomeState extends State<AnimatedHome>
               return Center(
                 child: Transform(
                   alignment: Alignment.center,
-                  transform: Matrix4.identity()..rotateX(xValue),
-                  // ..rotateY(yValue)
-                  // ..rotateZ(zValue),
+                  transform: Matrix4.identity()..rotateX(xValue)
+                  ..rotateY(yValue)
+                  ..rotateZ(zValue),
                   child: Stack(
                     children: [
                       Container(

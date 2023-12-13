@@ -5,7 +5,6 @@ import 'package:ait_training/quotes/cubit/quotes_cubit.dart';
 import 'package:ait_training/quotes/ui/quotes_page.dart';
 import 'package:ait_training/home/tiled_home.dart';
 import 'package:ait_training/word/cubit/word_cubit.dart';
-import 'package:ait_training/word/ui/word_favorites_page.dart';
 import 'package:ait_training/word/ui/word_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

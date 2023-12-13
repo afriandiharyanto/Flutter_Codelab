@@ -1,7 +1,6 @@
 import 'package:ait_training/idea/repository/idea_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get_it/get_it.dart';
 
 part 'idea_state.dart';
 part 'idea_cubit.freezed.dart';
