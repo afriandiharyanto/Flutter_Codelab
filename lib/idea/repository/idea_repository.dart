@@ -13,11 +13,12 @@ class IdeaRepository {
       if (response.statusCode == 200) {
         var result = json.decode(response.body);
         Idea idea = Idea(
-            activity: result['activity'] as String,
-            accessibility: 1.0,
-            price: 1.0,
-            participants: 0,
-            type: result['type'] as String);
+          activity: result['activity'] as String,
+          accessibility: 1.0,
+          price: 1.0,
+          participants: 0,
+          type: result['type'] as String,
+        );
 
         return Right(idea);
       } else {

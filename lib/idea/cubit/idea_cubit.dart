@@ -18,11 +18,13 @@ class IdeaCubit extends Cubit<IdeaState> {
 
     result.fold(
       (error) => emit(IdeaState.error(error)),
-      (idea) => emit(IdeaState.loaded(
-        idea.activity,
-        idea.participants,
-        idea.price,
-      )),
+      (idea) => emit(
+        IdeaState.loaded(
+          idea.activity,
+          idea.participants,
+          idea.price,
+        ),
+      ),
     );
   }
 
@@ -30,11 +32,13 @@ class IdeaCubit extends Cubit<IdeaState> {
     var result = await repository.fetchIdea(type: type);
     result.fold(
       (error) => emit(IdeaState.error(error)),
-      (idea) => emit(IdeaState.loaded(
-        idea.activity,
-        idea.participants,
-        idea.price,
-      )),
+      (idea) => emit(
+        IdeaState.loaded(
+          idea.activity,
+          idea.participants,
+          idea.price,
+        ),
+      ),
     );
   }
 }

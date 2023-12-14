@@ -69,16 +69,16 @@ class StaggeredHome extends StatelessWidget {
   ];
 
   final List<Color> _colors = const <Color>[
-    Color(0xff7703d6),
-    Color(0xff6a00ff),
-    Color(0xffff00ff),
-    Color(0xffff0040),
-    Color(0xffff9500),
-    Color(0xffffff00),
-    Color(0xffaaff00),
-    Color(0xff00ff15),
-    Color(0xff00ffff),
-    Color(0xff0095ff),
+    Color(0xff264653),
+    Color(0xff219ebc),
+    Color(0xff023047),
+    Color(0xffffb703),
+    Color(0xfffb8500),
+    Color(0xffe63946),
+    Color(0xff2a9d8f),
+    Color(0xffe9c46a),
+    Color(0xfff4a261),
+    Color(0xffe76f51),
   ];
 }
 

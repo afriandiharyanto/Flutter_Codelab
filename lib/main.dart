@@ -20,13 +20,6 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       routerConfig: router,
-      // home: Scaffold(
-      //   appBar: AppBar(
-      //     backgroundColor: const Color(0xFF245953),
-      //     toolbarHeight: 0.0,
-      //   ),
-      //   body: const StaggeredHome(),
-      // ),
     );
   }
 }

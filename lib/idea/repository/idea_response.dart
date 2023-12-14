@@ -5,12 +5,13 @@ class Idea {
   int? participants;
   double? price;
 
-  Idea(
-      {this.activity,
-      this.accessibility,
-      this.type,
-      this.participants,
-      this.price});
+  Idea({
+    this.activity,
+    this.accessibility,
+    this.type,
+    this.participants,
+    this.price,
+  });
 
   Idea.fromJson(Map<String, dynamic> json) {
     activity = json['activity'];
@@ -21,12 +22,12 @@ class Idea {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['activity'] = this.activity;
-    data['accessibility'] = this.accessibility;
-    data['type'] = this.type;
-    data['participants'] = this.participants;
-    data['price'] = this.price;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['activity'] = activity;
+    data['accessibility'] = accessibility;
+    data['type'] = type;
+    data['participants'] = participants;
+    data['price'] = price;
     return data;
   }
 }
