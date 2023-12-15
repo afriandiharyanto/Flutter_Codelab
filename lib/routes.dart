@@ -24,7 +24,7 @@ final GoRouter router = GoRouter(
           path: 'word',
           builder: (BuildContext context, GoRouterState state) {
             return BlocProvider(
-              create: (_) => GetIt.I<WordPairCubit>(),
+              create: (_) => GetIt.I<WordCubit>(),
               child: const WordPage(),
             );
           },
@@ -58,7 +58,18 @@ final GoRouter router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             return BlocProvider(
               create: (_) => GetIt.I<IdeaCubit>(),
-              child: const AnimatedPage(),
+              child: Scaffold(
+                appBar: AppBar(
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.black),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  backgroundColor: Colors.cyan,
+                  title: const Text("Boring App"),
+                  centerTitle: true,
+                ),
+                body: const AnimatedPage(),
+              ),
             );
           },
         ),
