@@ -1,31 +1,51 @@
-import 'package:english_words/english_words.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'dart:math' as math;
+part of 'word_cubit.dart';
 
-class WordState extends Equatable {
-  const WordState(
-      {required this.wordPair, required this.favorites, required this.color});
+@freezed
+sealed class WordState with _$WordState {
+  const factory WordState() = _WordState;
+  factory WordState.loading() {
+    return const WordLoading();
+  }
 
-  final WordPair wordPair;
-  final Set<WordPair> favorites;
+  factory WordState.error(Exception exception) {
+    return WordError(exception: exception);
+  }
+
+  factory WordState.loaded({
+    required String idea,
+    required Set<String> favorites,
+    required Set<String> done,
+    required Color color,
+  }) {
+    return WordLoaded(
+      idea: idea,
+      favorites: favorites,
+      done: done,
+      color: color,
+    );
+  }
+}
+
+class WordLoading implements WordState {
+  const WordLoading();
+}
+
+class WordError implements WordState {
+  const WordError({required this.exception});
+
+  final Exception exception;
+}
+
+class WordLoaded implements WordState {
+  const WordLoaded({
+    required this.idea,
+    required this.favorites,
+    required this.done,
+    required this.color,
+  });
+
+  final String idea;
+  final Set<String> favorites;
+  final Set<String> done;
   final Color color;
-
-  @override
-  List<Object?> get props => [wordPair, favorites];
-
-  factory WordState.empty() {
-    return WordState(
-        wordPair: WordPair.random(),
-        favorites: const {},
-        color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()));
-  }
-
-  WordState copy(
-      {WordPair? newPair, Set<WordPair>? newFavorites, Color? newColor}) {
-    return WordState(
-        wordPair: newPair ?? wordPair,
-        favorites: newFavorites ?? favorites,
-        color: newColor ?? color);
-  }
 }
