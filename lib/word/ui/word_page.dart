@@ -33,15 +33,19 @@ class _HomePageState extends State<WordPage> {
         centerTitle: true,
       ),
       body: BlocProvider(
-        create: (_) => GetIt.I<WordPairCubit>(),
+        create: (_) => GetIt.I<WordCubit>(),
         child: _page[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.generating_tokens), label: "Generator"),
+            icon: Icon(Icons.generating_tokens),
+            label: "Generator",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: "Favorite"),
+            icon: Icon(Icons.favorite),
+            label: "Favorite",
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.cyan,
