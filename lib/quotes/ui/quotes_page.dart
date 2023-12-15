@@ -32,34 +32,36 @@ class QuotesPage extends StatelessWidget {
           QuotesError() => Center(
               child: Text(state.exception.toString()),
             ),
-          QuotesLoaded() => Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CardWidget(
-                    mainWord:
-                        "${state.content} \n-${state.name} : ${state.tag}-",
-                    bgColor: Colors.cyan,
-                    fontSize: 12.0,
+          QuotesLoaded() => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CardWidget(
+                  mainWord: state.content,
+                  additionalWord: "\n\n-${state.name}-",
+                  fontSize: 12.0,
+                  bgColor: Colors.white,
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    cubit.fetchQuotes();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amberAccent,
                   ),
-                  const SizedBox(
-                    height: 20.0,
+                  child: Text(
+                    'Next',
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(0.9), fontSize: 14.0),
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        cubit.fetchQuotes();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amberAccent,
-                      ),
-                      child: Text(
-                        'Next',
-                        style: TextStyle(
-                            color: Colors.black.withOpacity(0.9),
-                            fontSize: 14.0),
-                      )),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+              ],
             ),
           QuotesState() => const Center(
               child: Text("Default"),
